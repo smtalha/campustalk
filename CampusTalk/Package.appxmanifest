@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="16588MuhammadTalha.CampusTalk" Publisher="CN=D6A369A6-6F8B-4E1E-A0D3-181878DAC1D5" Version="1.1.0.1" />
+  <Properties>
+    <DisplayName>5854fd Campus Talk</DisplayName>
+    <PublisherDisplayName>Muhammad Talha</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CampusTalk.App">
+      <m2:VisualElements DisplayName="5854fd Campus Talk" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\Square30x30Logo.png" Description="Campus Talk - A new dimension to your on-campus social life." ForegroundText="light" BackgroundColor="#f15a29">
+        <m2:DefaultTile ShortName="Campus Talk" Square310x310Logo="Assets\Square310x310Logo.png" Wide310x150Logo="Assets\Wide310x150Logo.png" Square70x70Logo="Assets\Square70x70Logo.png" DefaultSize="wide310x150Logo">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+            <m2:ShowOn Tile="square310x310Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#f15a29" />
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="landscape" />
+        </m2:InitialRotationPreference>
+        <m2:ApplicationView MinWidth="width500" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="picturesLibrary" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
+</Package>

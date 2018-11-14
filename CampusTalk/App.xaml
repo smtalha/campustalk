@@ -1,0 +1,33 @@
+﻿<Application x:Class="CampusTalk.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:CampusTalk">
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="AppBarItemBackgroundThemeBrush"
+                         Color="Transparent" />
+        <SolidColorBrush x:Key="AppBarItemDisabledForegroundThemeBrush"
+                         Color="#f15a29" />
+        <SolidColorBrush x:Key="AppBarItemForegroundThemeBrush"
+                         Color="#f15a29" />
+        <SolidColorBrush x:Key="AppBarItemPointerOverBackgroundThemeBrush"
+                         Color="#f1aa93" />
+        <SolidColorBrush x:Key="AppBarItemPointerOverForegroundThemeBrush"
+                         Color="#f15a29" />
+        <SolidColorBrush x:Key="AppBarItemPressedForegroundThemeBrush"
+                         Color="#ffffff" />
+        <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundThemeBrush"
+                         Color="#f15a29" />
+        <SolidColorBrush x:Key="ComboBoxItemSelectedPointerOverBackgroundThemeBrush"
+                         Color="#FFF07148" />
+        <SolidColorBrush x:Key="ProgressBarIndeterminateForegroundThemeBrush"
+                         Color="#f15a29" />
+        <SolidColorBrush x:Key="ProgressRingIndeterminateForegroundThemeBrush"
+                         Color="#f15a29" />
+
+    </Application.Resources>
+
+</Application>
+    
+
+    

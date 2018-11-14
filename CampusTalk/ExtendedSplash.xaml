@@ -1,0 +1,128 @@
+﻿<Page x:Class="CampusTalk.ExtendedSplash"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:CampusTalk"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="LoadingAnimation"
+                    RepeatBehavior="Forever">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="path">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="path1">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.6">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="path2">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.9">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="path3">
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+
+    <Grid>
+        
+        <Grid Background="Black"
+              Opacity="0.7" />
+        
+        <Image HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Stretch="None"
+               Source="Assets/ExtendedSplash.png" />
+        <Canvas x:Name="anim"
+                HorizontalAlignment="Center"
+                Height="100"
+                UseLayoutRounding="False"
+                VerticalAlignment="Center"
+                Width="100"
+                Margin="0,0,0,126">
+            <Canvas x:Name="Layer_1"
+                    Height="53.77"
+                    Canvas.Left="15.053"
+                    Canvas.Top="23.115"
+                    Width="69.895">
+                <Path x:Name="path3"
+                      Data="F1M34.18,0C47.837,0.218 58.998,4.608 68.408,13.372 69.773,14.643 70.231,16.22 69.645,17.995 69.095,19.662 67.848,20.606 66.124,20.836 64.683,21.028 63.48,20.446 62.445,19.474 59.891,17.077 57.084,15.029 53.996,13.373 48.941,10.661 43.561,9.056 37.828,8.692 26.913,7.999 17.27,11.188 8.882,18.202 7.959,18.974 7.076,19.836 6.042,20.423 4.366,21.375 2.207,20.791 0.974,19.243 -0.256,17.701 -0.393,15.401 0.976,14.052 2.795,12.26 4.732,10.551 6.797,9.053 13.218,4.397 20.417,1.585 28.272,0.511 30.497,0.207 32.751,0.119 34.18,0"
+                      Fill="#FFF15A29"
+                      Height="20.884"
+                      Canvas.Left="0"
+                      Stretch="None"
+                      Canvas.Top="0"
+                      Width="69.895"
+                      Visibility="Collapsed" />
+                <Path x:Name="path2"
+                      Data="F1M50.866,13.407C50.797,14.673 50.095,15.973 48.574,16.745 47.093,17.496 45.603,17.444 44.263,16.464 42.998,15.538 41.885,14.401 40.605,13.5 33.303,8.362 25.395,7.178 16.913,10.012 13.344,11.204 10.256,13.192 7.543,15.781 6.495,16.78 5.291,17.343 3.806,17.171 2.235,16.99 1.105,16.182 0.445,14.758 -0.254,13.247 -0.148,11.736 0.903,10.458 2.529,8.482 4.581,6.961 6.712,5.573 10.815,2.9 15.288,1.134 20.138,0.409 25.628,-0.412 31.026,-0.015 36.312,1.769 41.252,3.436 45.575,6.094 49.345,9.679 50.347,10.632 50.859,11.707 50.866,13.407"
+                      Fill="#FFF15A29"
+                      Height="17.259"
+                      Canvas.Left="9.511"
+                      Stretch="None"
+                      Canvas.Top="14.345"
+                      Width="50.865"
+                      Visibility="Collapsed" />
+                <Path x:Name="path1"
+                      Data="F1M16.231,0C21.737,0.118 26.664,2.235 30.649,6.474 32.229,8.154 32.212,10.867 30.646,12.382 28.829,14.139 26.284,14.139 24.429,12.28 22.653,10.5 20.625,9.224 18.137,8.771 14.193,8.053 10.75,9.087 7.879,11.877 6.775,12.95 5.614,13.75 3.995,13.631 2.416,13.515 1.256,12.76 0.532,11.365 -0.235,9.886 -0.196,8.374 0.797,7.055 2.643,4.604 5.125,2.932 7.902,1.692 10.454,0.552 13.146,0.036 16.231,0"
+                      Fill="#FFF15A29"
+                      Height="13.687"
+                      Canvas.Left="19.037"
+                      Stretch="None"
+                      Canvas.Top="28.636"
+                      Width="31.828"
+                      Visibility="Collapsed" />
+                <Path x:Name="path"
+                      Data="F1M5.083,10.3C2.239,10.246 -0.037,7.932 0,5.132 0.038,2.274 2.436,-0.083 5.218,0.003 8.074,0.092 10.339,2.406 10.299,5.194 10.258,8.066 7.923,10.352 5.083,10.3"
+                      Fill="#FFF15A29"
+                      Height="10.3"
+                      Canvas.Left="29.82"
+                      Stretch="None"
+                      Canvas.Top="43.47"
+                      Width="10.3"
+                      Visibility="Collapsed" />
+            </Canvas>
+        </Canvas>
+
+    </Grid>
+</Page>

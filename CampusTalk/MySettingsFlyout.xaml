@@ -1,0 +1,360 @@
+﻿<SettingsFlyout x:Class="CampusTalk.MySettingsFlyout"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:local="using:CampusTalk"
+                xmlns:Converters='using:CampusTalk.Converters'
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d"
+                IconSource="Assets/SmallLogo.png"
+                Title="Settings"
+                HeaderBackground="#f15a29"
+                HeaderForeground="White"
+                BorderBrush="#f15a29"
+                d:DesignWidth="346">
+    <SettingsFlyout.Resources>
+        <Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Converters:StatusToColorConverter x:Key="StatusToColorConverter" />
+        <Converters:StatusToIndexConverter x:Key="StatusToIndexConverter" />
+        <Converters:RecentMessageDateTimeConverter x:Key="RecentMessageDateTimeConverter" />
+        <Converters:ConversationDateTimeConverter x:Key="ConversationDateTimeConverter" />
+        <Converters:FileToImageSourceConverter x:Key="FileToImageSourceConverter" />
+    </SettingsFlyout.Resources>
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Width="260">
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <StackPanel x:Name="userDetailsSection">
+            <!-- Selected User's Profile Picture Container-->
+            <Ellipse Height="200"
+                     Width="200"
+                     Stroke="#f15a29"
+                     StrokeThickness="3"
+                     HorizontalAlignment="Center"
+                     Grid.Column="0"
+                     Margin="0,5,0,0"
+                     Tapped="profile_picture_tapped"
+                     ToolTipService.ToolTip="Tap to change">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="selectedUserImage"
+                                ImageSource="{Binding ProfilePicture}"
+                                Stretch="UniformToFill" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <!-- Selected User's Profile Picture Container END-->
+
+            <!-- User's Name-->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Name"
+                       Foreground="#f15a29"
+                       Margin="0,10,0,0" />
+            <TextBox x:Name="nameBox"
+                     Text="{Binding Name}"
+                     Margin="0,10,0,0"
+                     BorderBrush="#f15a29"
+                     SelectionHighlightColor="#f15a29" />
+            <!-- User's Name END-->
+
+            <!-- User's Email-->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Email"
+                       Foreground="#f15a29"
+                       Margin="0,10,0,0" />
+            <TextBox x:Name="emailBox"
+                     Text="{Binding Email}"
+                     Margin="0,10,0,0"
+                     BorderBrush="#f15a29"
+                     SelectionHighlightColor="#f15a29" />
+            <!-- User's Email END-->
+
+            <!-- User's Username-->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Username"
+                       Foreground="#f15a29"
+                       Margin="0,10,0,0" />
+            <TextBox x:Name="usernameBox"
+                     Text="{Binding Username}"
+                     Margin="0,10,0,0"
+                     BorderBrush="#f15a29"
+                     SelectionHighlightColor="#f15a29"
+                     IsReadOnly="True" />
+            <!-- User's Username END-->
+
+        </StackPanel>
+
+        <!-- Favourite Users-->
+        <Grid x:Name="favouriteUserSection"
+              Margin="0,30,0,0">
+            <Button x:Name="favouriteUsersButton"
+                    Content="Favourite Users"
+                    RequestedTheme="Light"
+                    HorizontalAlignment="Stretch"
+                    FontFamily="Segoe UI"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Background="#f15a29"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Click="favouriteUsersButton_Click">
+
+                <!-- Favourites Flyout-->
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout Placement="Left">
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="BorderThickness"
+                                        Value="2" />
+                                <Setter Property="BorderBrush"
+                                        Value="#f15a29" />
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+
+                        <Grid Width="340">
+                            <StackPanel>
+                                <!-- Popup Title-->
+                                <TextBlock Text="Favourites"
+                                           FontFamily="Segoe UI"
+                                           FontSize="28"
+                                           FontWeight="Light"
+                                           Foreground="#f15a29"
+                                           HorizontalAlignment="Left"
+                                           Margin="10,0,0,0" />
+                                <!-- Popup Title END-->
+
+                                <!-- List of Users-->
+                                <ListView x:Name="favouritesList"
+                                          Margin="5,5,0,5"
+                                          SelectionMode="None"
+                                          ItemsSource="{Binding}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0,10,0,0"
+                                                  Width="300">
+                                                <TextBlock   x:Name="favouriteName"
+                                                             Text="{Binding Name}"
+                                                             HorizontalAlignment="Left"
+                                                             VerticalAlignment="Center"
+                                                             MaxWidth="250"
+                                                             TextTrimming="CharacterEllipsis"
+                                                             Foreground="Black"
+                                                             FontSize="16"
+                                                             FontFamily="Segoe UI"
+                                                             FontWeight="Medium" />
+                                                <Button x:Name="favouriteRemoveButton"
+                                                        Content="Remove"
+                                                        RequestedTheme="Light"
+                                                        HorizontalAlignment="Right"
+                                                        FontFamily="Segoe UI"
+                                                        FontWeight="SemiBold"
+                                                        Foreground="White"
+                                                        Background="#f15a29"
+                                                        BorderBrush="{x:Null}"
+                                                        BorderThickness="0"
+                                                        FontSize="14"
+                                                        Width="100"
+                                                        Click="favouriteRemoveButton_Click" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <!-- List of Users END-->
+
+                            </StackPanel>
+                        </Grid>
+
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                <!-- Favourites Flyout END-->
+            </Button>
+        </Grid>
+        <!-- Favourite Users END-->
+
+
+        <!-- Blocked Users-->
+        <Grid x:Name="blockedUserSection"
+              Margin="0,10,0,0">
+            <Button x:Name="blockedUsersButton"
+                    Content="Blocked Users"
+                    RequestedTheme="Light"
+                    HorizontalAlignment="Stretch"
+                    FontFamily="Segoe UI"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Background="#f15a29"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Click="blockedUsersButton_Click">
+
+                <!-- Blocked Flyout-->
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout Placement="Left">
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="BorderThickness"
+                                        Value="2" />
+                                <Setter Property="BorderBrush"
+                                        Value="#f15a29" />
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+
+                        <Grid Width="340">
+                            <StackPanel>
+                                <!-- Popup Title-->
+                                <TextBlock Text="Blocked Users"
+                                           FontFamily="Segoe UI"
+                                           FontSize="28"
+                                           FontWeight="Light"
+                                           Foreground="#f15a29"
+                                           HorizontalAlignment="Left"
+                                           Margin="10,0,0,0" />
+                                <!-- Popup Title END-->
+
+                                <!-- List of Users-->
+                                <ListView x:Name="blockedList"
+                                          Margin="5,5,0,5"
+                                          SelectionMode="None"
+                                          ItemsSource="{Binding}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0,10,0,0"
+                                                  Width="300">
+                                                <TextBlock   x:Name="blockedName"
+                                                             Text="{Binding Name}"
+                                                             HorizontalAlignment="Left"
+                                                             VerticalAlignment="Center"
+                                                             MaxWidth="250"
+                                                             TextTrimming="CharacterEllipsis"
+                                                             Foreground="Black"
+                                                             FontSize="16"
+                                                             FontFamily="Segoe UI"
+                                                             FontWeight="Medium" />
+                                                <Button x:Name="unblockButton"
+                                                        Content="Unblock"
+                                                        RequestedTheme="Light"
+                                                        HorizontalAlignment="Right"
+                                                        FontFamily="Segoe UI"
+                                                        FontWeight="SemiBold"
+                                                        Foreground="White"
+                                                        Background="#f15a29"
+                                                        BorderBrush="{x:Null}"
+                                                        BorderThickness="0"
+                                                        FontSize="14"
+                                                        Width="100"
+                                                        Click="unblockButton_Click" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <!-- List of Users END-->
+
+                            </StackPanel>
+                        </Grid>
+
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                <!-- Blocked Flyout END-->
+            </Button>
+        </Grid>
+        <!-- Blocked Users END-->
+
+        <!-- Save Changes-->
+        <ProgressBar x:Name="saveProgress"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Visibility="Collapsed"
+                     IsIndeterminate="True"
+                     Margin="0,10,0,0" />
+        <Grid x:Name="saveChangesSection"
+              Margin="0,10,0,0">
+            <Button x:Name="saveChangesButton"
+                    Content="Save Changes"
+                    RequestedTheme="Light"
+                    HorizontalAlignment="Stretch"
+                    FontFamily="Segoe UI"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Background="LimeGreen"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Click="saveChangesButton_Click">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout Placement="Bottom">
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="BorderThickness"
+                                        Value="2" />
+                                <Setter Property="BorderBrush"
+                                        Value="#f15a29" />
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+                        <TextBlock Text="Changes have been saved."
+                                   FontFamily="Segoe UI"
+                                   Foreground="Black"
+                                   FontSize="14"
+                                   FontWeight="Medium" />
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </Button>
+        </Grid>
+        <!-- Save Changes END-->
+
+
+        <!-- Campus Talk-->
+        <StackPanel x:Name="appSection"
+                    Margin="0,30,0,0">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                       Text="About Campus Talk"
+                       Foreground="#f15a29" />
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                       Margin="0,0,0,20"
+                       TextWrapping="Wrap"
+                       Text="{Binding About}">
+            </TextBlock>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Privacy Policy"
+                       Foreground="#f15a29" />
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                       Margin="0,0,0,20"
+                       TextWrapping="Wrap"
+                       Text="The app doesn't collect any user data, all the data flows encrypted within the local area network.">
+            </TextBlock>
+            <HyperlinkButton Content="Give feedback"
+                             Padding="0"
+                             NavigateUri="mailto:campustalk@hotmail.com"
+                             HorizontalAlignment="Left" />
+
+            <HyperlinkButton Content="Report bugs"
+                             Padding="0"
+                             NavigateUri="mailto:campustalk@hotmail.com"
+                             HorizontalAlignment="Left" />
+        </StackPanel>
+        <!-- Campus Talk END-->
+
+        <!-- Log out-->
+        <Grid x:Name="logoutSection"
+              Margin="0,20,0,0">
+            <Button x:Name="logoutButton"
+                    Content="Sign out"
+                    RequestedTheme="Light"
+                    HorizontalAlignment="Stretch"
+                    FontFamily="Segoe UI"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Background="Red"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Click="logoutButton_Click" />
+        </Grid>
+        <!-- Log out END-->
+
+
+    </StackPanel>
+</SettingsFlyout>
